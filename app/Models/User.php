@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'access_level_id',
     ];
 
     /**
@@ -44,5 +45,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the access level associated with the user.
+     */
+    public function accessLevel()
+    {
+        return $this->belongsTo(AccessLevel::class, 'access_level_id');
     }
 }
